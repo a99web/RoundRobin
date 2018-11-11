@@ -9,22 +9,33 @@ RoundRobin::RoundRobin(std::list< std::pair<int, std::pair<int, int> > > d, int 
 
 double RoundRobin::average_tat() {
   std::list<Process *>::iterator iter;// = completed_processes.begin();
-  double avg_tat = 0;
-  std::cout<<"********************* Average TAT *********************"<<std::endl;
+  double avg_tat = 0.0;
+  //std::cout<<"********************* Average TAT *********************"<<std::endl;
 
   for(iter = completed_processes.begin(); iter != completed_processes.end(); iter++) {
-    std::cout<<"TAT of process "<<(*iter)->get_pid()<<" = "<<(*iter)->get_completion_time() - (*iter)->get_arrival_time()<<std::endl;
+    //std::cout<<"TAT of process "<<(*iter)->get_pid()<<" = "<<(*iter)->get_completion_time() - (*iter)->get_arrival_time()<<std::endl;
     avg_tat += ((*iter)->get_completion_time() - (*iter)->get_arrival_time());
   }
 
-  avg_tat = avg_tat * 1.0/completed_processes.size();
+  avg_tat = avg_tat * 1.0/ completed_processes.size();
 
   return avg_tat;
 
 }
 
 double RoundRobin::average_wt() {
-  // add logic
+
+  std::list<Process *>::iterator iter;// = completed_processes.begin();
+
+  double avg_wt = 0.0;
+
+  for(iter = completed_processes.begin(); iter != completed_processes.end(); iter++) {
+    int tat = (*iter)->get_completion_time() - (*iter)->get_arrival_time();
+    avg_wt += tat - (*iter)->get_burst_time();
+  }
+  
+  avg_wt = avg_wt * 1.0 / completed_processes.size();
+
 }
 
 void RoundRobin::schedule_process() {
