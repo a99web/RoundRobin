@@ -43,7 +43,7 @@ void RoundRobin::schedule_process() {
     add_process_to_queue(current_time, current_time + updated_tq, temp_data);
     current_time += time_quanta;
     
-    std::cout<<"Executing process: "<<p->get_pid()<<std::endl;
+    std::cout<<"Executing process: "<<p->get_pid()<<", time quanta: "<<updated_tq<<std::endl;
     rrq.pop();
     p->set_burst_time(p->get_burst_time() - updated_tq);
     if(!p->finished_execution()) rrq.push(p);
