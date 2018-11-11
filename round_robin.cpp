@@ -13,8 +13,8 @@ int RoundRobin::average_tat() {
   std::cout<<"********************* Average TAT *********************"<<std::endl;
 
   for(iter = completed_processes.begin(); iter != completed_processes.end(); iter++) {
-    std::cout<<"TAT of process "<<(*iter)->get_pid()<<" = "<<(*iter)->get_completion_time() - (*iter)->get_burst_time()<<std::endl;
-    avg_tat += ((*iter)->get_completion_time() - (*iter)->get_burst_time());
+    std::cout<<"TAT of process "<<(*iter)->get_pid()<<" = "<<(*iter)->get_completion_time() - (*iter)->get_arrival_time()<<std::endl;
+    avg_tat += ((*iter)->get_completion_time() - (*iter)->get_arrival_time());
   }
 
   return avg_tat/completed_processes.size();

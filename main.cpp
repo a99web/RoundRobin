@@ -15,5 +15,5 @@ int main() {
 
   scheduler.schedule_process();
 
-  std::cout<<scheduler.average_tat()<<std::endl;
+  std::cout<<"Average TAT: "<<scheduler.average_tat()<<std::endl;
 }
