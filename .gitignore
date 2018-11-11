@@ -1,3 +1,6 @@
 # ignore all .o and .out file
 *.out
 *.o
+
+# ignore the executable
+main
