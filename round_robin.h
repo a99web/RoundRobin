@@ -8,6 +8,7 @@ class RoundRobin {
   int current_time;
   int time_quanta;
   std::queue<Process *> rrq;
+  std::list<Process *> completed_processes;
   // list of maps related to the process, the pair stores the arrival time and burst time respectively
   std::list< std::pair<int, std::pair<int, int> > > data;
   

@@ -3,6 +3,7 @@ class Process {
   int arrival_time;
   int completion_time;
   int burst_time;
+  int remaining_burst_time;
 
   public:
     Process(int, int, int);
@@ -12,6 +13,7 @@ class Process {
     void set_completion_time(int);
     int get_arrival_time();
     int get_burst_time();
-    void set_burst_time(int);
+    int get_remaining_burst_time();
+    void set_remaining_burst_time(int);
     bool finished_execution();
 };

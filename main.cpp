@@ -15,4 +15,5 @@ int main() {
 
   scheduler.schedule_process();
 
+  std::cout<<scheduler.average_tat()<<std::endl;
 }

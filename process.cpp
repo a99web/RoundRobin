@@ -1,9 +1,9 @@
 #include "process.h"
 
-Process::Process(int pid, int at, int bt): pid(pid), arrival_time(at), burst_time(bt) {}
+Process::Process(int pid, int at, int bt): pid(pid), arrival_time(at), burst_time(bt), remaining_burst_time(bt) {}
 
 bool Process::finished_execution() {
-  return burst_time == 0;
+  return remaining_burst_time == 0;
 }
 
 void Process::set_completion_time(int time) {
@@ -16,9 +16,11 @@ int Process::get_arrival_time() { return arrival_time; }
 
 int Process::get_burst_time() { return burst_time; }
 
+int Process::get_remaining_burst_time() { return remaining_burst_time; }
+
 int Process::get_pid() { return pid; }
 
-void Process::set_burst_time(int bt) { 
- if(bt <= 0) burst_time = 0; 
- else burst_time = bt;
+void Process::set_remaining_burst_time(int bt) { 
+ if(bt <= 0) remaining_burst_time = 0; 
+ else remaining_burst_time = bt;
 }
