@@ -7,9 +7,9 @@ RoundRobin::RoundRobin(std::list< std::pair<int, std::pair<int, int> > > d, int 
 {
 }  
 
-int RoundRobin::average_tat() {
+double RoundRobin::average_tat() {
   std::list<Process *>::iterator iter;// = completed_processes.begin();
-  int avg_tat = 0;
+  double avg_tat = 0;
   std::cout<<"********************* Average TAT *********************"<<std::endl;
 
   for(iter = completed_processes.begin(); iter != completed_processes.end(); iter++) {
@@ -17,12 +17,13 @@ int RoundRobin::average_tat() {
     avg_tat += ((*iter)->get_completion_time() - (*iter)->get_arrival_time());
   }
 
-  return avg_tat/completed_processes.size();
+  avg_tat = avg_tat * 1.0/completed_processes.size();
 
+  return avg_tat;
 
 }
 
-int RoundRobin::average_wt() {
+double RoundRobin::average_wt() {
   // add logic
 }
 

@@ -18,8 +18,8 @@ class RoundRobin {
 
     void schedule_process();
 
-    int average_tat();
-    int average_wt();
+    double average_tat();
+    double average_wt();
     void add_process_to_queue(int, int, std::list< std::pair<int, std::pair<int, int> > >&);
 
 };
