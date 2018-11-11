@@ -35,13 +35,17 @@ void RoundRobin::schedule_process() {
   // to ignore the first process data
   temp_data.pop_front();
   while(!rrq.empty()) {
-    // add all the process that came during this time to queue
-    add_process_to_queue(current_time, current_time + time_quanta, temp_data);
-    current_time += time_quanta;
     Process *p = rrq.front();
+    // if the process has burst time less than the time_quata
+    int updated_tq = time_quanta;
+    if(p->get_burst_time() < time_quanta) updated_tq = p->get_burst_time();
+    // add all the process that came during this time to queue
+    add_process_to_queue(current_time, current_time + updated_tq, temp_data);
+    current_time += time_quanta;
+    
     std::cout<<"Executing process: "<<p->get_pid()<<std::endl;
     rrq.pop();
-    p->set_burst_time(p->get_burst_time() - time_quanta);
+    p->set_burst_time(p->get_burst_time() - updated_tq);
     if(!p->finished_execution()) rrq.push(p);
     else delete p;
   }
